@@ -11,7 +11,7 @@
   /* ink */
   --ink: #101a1d;
   --ink-soft: #37474c;
-  --ink-mute: #65767b;
+  --ink-mute: #586a70; /* darkened from #65767b to clear WCAG AA 4.5:1 on --bg and --bg-2 */
   /* brand — #0097b2 and its gradients are the entire accent system (no 2nd hue) */
   --brand: #0097b2;
   --brand-700: #0b6e84;

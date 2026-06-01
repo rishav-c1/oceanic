@@ -52,7 +52,7 @@
   white-space: nowrap;
 }
 .live {
-  color: var(--brand);
+  color: var(--brand-700);
   font-weight: 600;
 }
 .name {

@@ -20,6 +20,7 @@ function GalleryItem({
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
           className={styles.img}
           priority={priority}
+          quality={50}
         />
       </div>
       <figcaption className={styles.cap}>
@@ -43,7 +44,9 @@ export function GalleryGrid({
           <h2 className={styles.groupTitle}>{g.title}</h2>
           <div className={styles.grid}>
             {g.items.map((p, ii) => (
-              <GalleryItem key={p.slug} project={p} priority={gi === 0 && ii < 3} />
+              // Only the first image is the LCP candidate — keep it the sole
+              // priority/eager load so it doesn't share bandwidth with the rest.
+              <GalleryItem key={p.slug} project={p} priority={gi === 0 && ii === 0} />
             ))}
           </div>
         </section>

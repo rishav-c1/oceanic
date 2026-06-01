@@ -4,7 +4,13 @@ import { Button } from "./Button";
 import styles from "./CertificateCard.module.css";
 
 /** Certificate card: thumbnail + view/download links to the migrated local PDF. */
-export function CertificateCard({ project }: { project: Project }) {
+export function CertificateCard({
+  project,
+  priority = false,
+}: {
+  project: Project;
+  priority?: boolean;
+}) {
   if (!project.certificateImage || !project.certificatePdf) return null;
   const spec = [project.unitType, project.config].filter(Boolean).join(" · ");
   return (
@@ -17,6 +23,8 @@ export function CertificateCard({ project }: { project: Project }) {
           fill
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
           className={styles.img}
+          priority={priority}
+          quality={50}
         />
       </div>
       <h3 className={styles.name}>{project.name}</h3>

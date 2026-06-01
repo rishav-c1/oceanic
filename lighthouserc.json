@@ -1,15 +1,15 @@
 {
   "ci": {
     "collect": {
-      "startServerCommand": "pnpm start",
+      "startServerCommand": "pnpm start --port 4313",
       "url": [
-        "http://localhost:3000/",
-        "http://localhost:3000/about",
-        "http://localhost:3000/services",
-        "http://localhost:3000/projects",
-        "http://localhost:3000/projects/certificates",
-        "http://localhost:3000/gallery",
-        "http://localhost:3000/contact"
+        "http://localhost:4313/",
+        "http://localhost:4313/about",
+        "http://localhost:4313/services",
+        "http://localhost:4313/projects",
+        "http://localhost:4313/projects/certificates",
+        "http://localhost:4313/gallery",
+        "http://localhost:4313/contact"
       ],
       "numberOfRuns": 3,
       "settings": {

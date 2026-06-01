@@ -27,7 +27,7 @@
 .num {
   font-family: var(--mono);
   font-size: 12px;
-  color: var(--brand);
+  color: var(--brand-700);
   letter-spacing: 0.1em;
   font-weight: 600;
 }

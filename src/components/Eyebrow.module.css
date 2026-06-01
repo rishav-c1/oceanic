@@ -4,7 +4,7 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--brand);
+  color: var(--brand-700); /* deeper teal so the mono label clears AA as small text */
   display: inline-flex;
   align-items: center;
   gap: 10px;

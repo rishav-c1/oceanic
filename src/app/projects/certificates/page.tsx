@@ -37,8 +37,8 @@ export default function CertificatesPage() {
       <section className={styles.section}>
         <Container>
           <div className={styles.grid}>
-            {certificateProjects.map((p) => (
-              <CertificateCard key={p.slug} project={p} />
+            {certificateProjects.map((p, i) => (
+              <CertificateCard key={p.slug} project={p} priority={i === 0} />
             ))}
           </div>
         </Container>
