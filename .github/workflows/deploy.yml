@@ -39,11 +39,9 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /oceanic
         run: pnpm build
 
-      # enablement: true lets the workflow turn on Pages itself (via the job's
-      # pages:write token), so no manual Settings → Pages step is needed.
+      # Pages must be enabled once by an admin (Settings → Pages → Source:
+      # "GitHub Actions"); the default workflow token can't create the site.
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
