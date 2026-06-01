@@ -46,7 +46,7 @@ export default function AboutPage() {
               healthcare sector in Eastern India.
             </p>
             <p>
-              A few of the prestigious projects that have been executed by the chief
+              A few of the prestigious projects that have been executed by the principal
               consultant-cum-founder of the company include Columbia Asia Hospital
               (67 000 sq ft 100 bedded Multi-speciality Hospital in Salt Lake, Kolkata,
               West Bengal), RSV Hospital (40 000 sq ft 100 bedded Multi-speciality
@@ -69,7 +69,7 @@ export default function AboutPage() {
           name={FOUNDER.name}
           cta={{ label: "Detailed scope of work →", href: "/services" }}
         >
-          Promoted by experienced consultant Mr. Rajesh Chatterjee — the chief
+          Promoted by experienced consultant Mr. Rajesh Chatterjee — the principal
           consultant-cum-founder of the company — whose name is well-known in the
           healthcare sector in Eastern India.
         </FounderSplit>

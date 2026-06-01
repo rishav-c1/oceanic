@@ -22,7 +22,7 @@ export function FounderSplit({
       <div className={styles.photo}>
         <Image
           src={withBase("/founder/rajesh-chatterjee.jpg")}
-          alt="Rajesh Chatterjee, Chief Consultant & Founder of Oceanic Project Consultants"
+          alt="Rajesh Chatterjee, Principal Consultant & Founder of Oceanic Project Consultants"
           fill
           sizes="(max-width: 760px) 100vw, 40vw"
           className={styles.img}

@@ -30,7 +30,7 @@ export const SITE = {
 export const FOUNDER = {
   name: "Rajesh Chatterjee",
   honorific: "Mr. Rajesh Chatterjee",
-  role: "Chief Consultant & Founder",
+  role: "Principal Consultant & Founder",
 } as const;
 
 export const CONTACT = {
