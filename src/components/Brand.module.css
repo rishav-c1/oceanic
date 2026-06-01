@@ -1,0 +1,32 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+.dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--grad-brand);
+  box-shadow: 0 0 0 4px rgba(0, 151, 178, 0.16);
+  flex: none;
+}
+.mark {
+  font-family: var(--disp);
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.sub {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+@media (max-width: 420px) {
+  .sub {
+    display: none;
+  }
+}

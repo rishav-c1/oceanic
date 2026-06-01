@@ -1,0 +1,38 @@
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  padding-bottom: 38px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--line);
+}
+.eb {
+  display: inline-flex;
+  margin-bottom: 18px;
+}
+.title {
+  font-size: clamp(30px, 4vw, 48px);
+  max-width: 18ch;
+}
+.lead {
+  max-width: 34ch;
+  color: var(--ink-soft);
+  font-size: 15.5px;
+}
+.dark {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.dark .title {
+  color: #fff;
+}
+.dark .lead {
+  color: rgba(255, 255, 255, 0.72);
+}
+@media (max-width: 760px) {
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+}

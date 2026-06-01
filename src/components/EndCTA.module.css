@@ -1,0 +1,50 @@
+.endcta {
+  background: var(--grad-dark);
+  color: #fff;
+}
+.between {
+  padding: 100px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.center {
+  padding: 80px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-size: clamp(34px, 5vw, 62px);
+  max-width: 16ch;
+}
+.center .title {
+  font-size: clamp(30px, 4.4vw, 52px);
+  max-width: 18ch;
+}
+.center .side {
+  margin-top: 30px;
+}
+.contacts {
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.82);
+}
+.contacts b {
+  color: #fff;
+  font-weight: 600;
+}
+.btns {
+  margin-top: 22px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.center .btns {
+  margin-top: 0;
+  justify-content: center;
+}

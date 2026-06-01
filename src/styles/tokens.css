@@ -1,0 +1,114 @@
+/*
+ * Oceanic design tokens + global base. Component styles live in CSS Modules;
+ * this file holds only custom properties, the reset, element defaults, and the
+ * site-wide reduced-motion guard. Tokens are verbatim from the approved mockups.
+ */
+:root {
+  /* grounds */
+  --bg: #f5f8f9;
+  --bg-2: #eaf1f3;
+  --white: #ffffff;
+  /* ink */
+  --ink: #101a1d;
+  --ink-soft: #37474c;
+  --ink-mute: #65767b;
+  /* brand — #0097b2 and its gradients are the entire accent system (no 2nd hue) */
+  --brand: #0097b2;
+  --brand-700: #0b6e84;
+  --brand-900: #063a46;
+  --brand-400: #36b5cc;
+  --brand-200: #9fe0ea;
+  /* gradients */
+  --grad-brand: linear-gradient(135deg, #00b9d4 0%, #0097b2 46%, #0b6e84 100%);
+  --grad-dark: linear-gradient(155deg, #063a46 0%, #0a5566 55%, #0097b2 165%);
+  --grad-soft: linear-gradient(135deg, #e3f5f8 0%, #f5f8f9 70%);
+  /* rules */
+  --line: rgba(16, 26, 29, 0.13);
+  --line-soft: rgba(16, 26, 29, 0.07);
+  /* type — mapped to the next/font variables set on <html> */
+  --disp: var(--font-disp), "Schibsted Grotesk", system-ui, sans-serif;
+  --sans: var(--font-sans), "Hanken Grotesk", system-ui, sans-serif;
+  --mono: var(--font-mono), "Spline Sans Mono", ui-monospace, monospace;
+  /* layout */
+  --maxw: 1240px;
+  --header-h: 72px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--disp);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+img,
+svg {
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
+/* Honour prefers-reduced-motion everywhere: no parallax/scroll-jacking exists,
+   and this collapses all reveals/transitions to instant. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Skip-to-content link (revealed on focus) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 0 0 6px 0;
+}
+.skip-link:focus {
+  left: 0;
+}

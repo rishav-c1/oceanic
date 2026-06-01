@@ -1,0 +1,51 @@
+.btn {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 11px 20px;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  background: none;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.btn:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.grad {
+  background: var(--grad-brand);
+  border: none;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0, 151, 178, 0.28);
+}
+.grad:hover {
+  box-shadow: 0 10px 26px rgba(0, 151, 178, 0.4);
+  transform: translateY(-1px);
+  color: #fff;
+  background: var(--grad-brand);
+}
+
+.onDark {
+  border-color: #fff;
+  color: #fff;
+}
+.onDark:hover {
+  background: #fff;
+  color: var(--brand-900);
+}
+.onDark.grad {
+  background: #fff;
+  color: var(--brand-700);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+.onDark.grad:hover {
+  background: #fff;
+  color: var(--brand-900);
+}
