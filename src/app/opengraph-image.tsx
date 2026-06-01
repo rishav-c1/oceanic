@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { SITE } from "@/content/site";
 
 // Site-wide 1200×630 OG image (replaces the blank Weebly editmysite placeholder).
+export const dynamic = "force-static"; // prerender for output: export (GitHub Pages)
 export const alt = `${SITE.name} — ${SITE.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

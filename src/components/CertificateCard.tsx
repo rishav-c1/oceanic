@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Project } from "@/content/projects";
+import { withBase } from "@/lib/paths";
 import { Button } from "./Button";
 import styles from "./CertificateCard.module.css";
 
@@ -18,7 +19,7 @@ export function CertificateCard({
       <span className={styles.tag}>Client recommendation</span>
       <div className={styles.thumb}>
         <Image
-          src={project.certificateImage}
+          src={withBase(project.certificateImage)}
           alt={`Completion and recommendation certificate for ${project.name}`}
           fill
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
@@ -30,10 +31,10 @@ export function CertificateCard({
       <h3 className={styles.name}>{project.name}</h3>
       <div className={styles.spec}>{spec}</div>
       <div className={styles.actions}>
-        <Button href={project.certificatePdf} variant="grad" external>
+        <Button href={withBase(project.certificatePdf)} variant="grad" external>
           View PDF →
         </Button>
-        <Button href={project.certificatePdf} download>
+        <Button href={withBase(project.certificatePdf)} download>
           Download
         </Button>
       </div>

@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/content/site";
 
+export const dynamic = "force-static"; // prerender for output: export (GitHub Pages)
+
 const PATHS = [
   "",
   "/about",

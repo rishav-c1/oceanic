@@ -1,11 +1,17 @@
 import type { NextConfig } from "next";
 
 /**
- * Legacy Weebly slugs → new clean routes. Carried as 301s (permanent) to
- * preserve crawl equivalence. Source: reference/content (Legacy SEO / redirects).
- * NOTE: these run at the server/CDN layer (Vercel), which is why the build is
- * deployed as a Next app, not a bare `output: "export"` (see PLAN.md).
+ * Dual-target build.
+ *  - Default (Vercel, production): a Next server build with `next/image` optimization
+ *    and the legacy .html → clean-route 301 redirects.
+ *  - GITHUB_PAGES=true: a fully static export (`output: "export"`) for GitHub Pages —
+ *    a static host can't run server redirects or the image optimizer, so those are
+ *    dropped here (the Vercel build keeps them). NEXT_PUBLIC_BASE_PATH (e.g. "/oceanic")
+ *    is the project-pages subpath.
  */
+const isExport = process.env.GITHUB_PAGES === "true";
+const basePath = isExport ? (process.env.NEXT_PUBLIC_BASE_PATH ?? "") : "";
+
 const legacyRedirects: { source: string; destination: string }[] = [
   { source: "/about-oceanic-project-consultants.html", destination: "/about" },
   {
@@ -24,14 +30,20 @@ const legacyRedirects: { source: string; destination: string }[] = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  images: {
-    formats: ["image/avif", "image/webp"],
-  },
-  async redirects() {
-    // Spec requires 301 (classic permanent). Next's `permanent: true` would emit
-    // 308; we set statusCode explicitly so legacy .html URLs return a true 301.
-    return legacyRedirects.map((r) => ({ ...r, statusCode: 301 }));
-  },
+  ...(isExport
+    ? {
+        output: "export",
+        basePath,
+        trailingSlash: true,
+        images: { unoptimized: true },
+      }
+    : {
+        images: { formats: ["image/avif", "image/webp"] },
+        async redirects() {
+          // Spec requires 301 (Next's permanent:true emits 308); set it explicitly.
+          return legacyRedirects.map((r) => ({ ...r, statusCode: 301 }));
+        },
+      }),
 };
 
 export default nextConfig;

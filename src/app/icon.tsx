@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 
 // Generated brand favicon (gradient + the wordmark dot motif) until the real
 // logo lands — TODO(asset). Next emits the <link rel="icon"> automatically.
+export const dynamic = "force-static"; // prerender for output: export (GitHub Pages)
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 

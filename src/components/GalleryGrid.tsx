@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Project } from "@/content/projects";
+import { withBase } from "@/lib/paths";
 import styles from "./GalleryGrid.module.css";
 
 function GalleryItem({
@@ -14,7 +15,7 @@ function GalleryItem({
     <figure className={styles.item}>
       <div className={styles.frame}>
         <Image
-          src={project.galleryImage}
+          src={withBase(project.galleryImage)}
           alt={`${project.name} — ${project.unitType} project by Oceanic`}
           fill
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
