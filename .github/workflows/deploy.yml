@@ -22,9 +22,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Version comes from package.json "packageManager" (pnpm@9.15.9) — don't
+      # also set `version` here or action-setup errors on the conflict.
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - uses: actions/setup-node@v4
         with:
@@ -39,7 +39,11 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /oceanic
         run: pnpm build
 
+      # enablement: true lets the workflow turn on Pages itself (via the job's
+      # pages:write token), so no manual Settings → Pages step is needed.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
