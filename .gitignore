@@ -1,0 +1,29 @@
+# dependencies
+/node_modules
+.pnp
+.pnp.*
+
+# next.js
+/.next/
+/out/
+next-env.d.ts.bak
+
+# production
+/build
+
+# testing / coverage
+/coverage
+/test-results
+/playwright-report
+/.lighthouseci
+*.tsbuildinfo
+
+# misc
+.DS_Store
+*.pem
+.vscode/*
+!.vscode/extensions.json
+
+# env
+.env
+.env*.local

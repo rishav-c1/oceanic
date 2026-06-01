@@ -1,0 +1,23 @@
+/*
+ * Phase 0 scaffold: minimal reset only.
+ * Phase 1 introduces src/styles/tokens.css (palette + brand gradients + the three
+ * fonts via next/font) and the real design system. Do not build design here.
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}

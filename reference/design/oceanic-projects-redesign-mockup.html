@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oceanic · Projects (redesign concept)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5f8f9; --bg-2:#eaf1f3; --white:#ffffff;
+    --ink:#101a1d; --ink-soft:#37474c; --ink-mute:#65767b;
+    --brand:#0097b2; --brand-700:#0b6e84; --brand-900:#063a46;
+    --brand-400:#36b5cc; --brand-200:#9fe0ea;
+    --grad-brand:linear-gradient(135deg,#00b9d4 0%,#0097b2 46%,#0b6e84 100%);
+    --grad-dark:linear-gradient(155deg,#063a46 0%,#0a5566 55%,#0097b2 165%);
+    --grad-soft:linear-gradient(135deg,#e3f5f8 0%,#f5f8f9 70%);
+    --line:rgba(16,26,29,.13); --line-soft:rgba(16,26,29,.07);
+    --disp:"Schibsted Grotesk",system-ui,sans-serif;
+    --sans:"Hanken Grotesk",system-ui,sans-serif;
+    --mono:"Spline Sans Mono",ui-monospace,monospace;
+    --maxw:1240px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .eyebrow{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);display:inline-flex;align-items:center;gap:10px}
+  .eyebrow::before{content:"";width:28px;height:2px;background:var(--grad-brand)}
+  h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.02;letter-spacing:-.02em}
+  .grad-text{background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .rv{opacity:0;transform:translateY(16px);animation:rise .8s cubic-bezier(.16,1,.3,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.rv{animation:none;opacity:1;transform:none}}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(245,248,249,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:11px}
+  .brand .dot{width:13px;height:13px;border-radius:50%;background:var(--grad-brand);box-shadow:0 0 0 4px rgba(0,151,178,.16)}
+  .brand .mark{font-family:var(--disp);font-size:23px;font-weight:700;letter-spacing:-.01em}
+  .brand .sub{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)}
+  nav ul{display:flex;gap:34px;list-style:none;font-size:14.5px;font-weight:500}
+  nav a{position:relative;padding:4px 0;color:var(--ink-soft)}
+  nav a.active{color:var(--ink)}
+  nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--grad-brand);transition:width .3s ease}
+  nav a:hover::after,nav a.active::after{width:100%}
+  .btn{font-family:var(--sans);font-size:14px;font-weight:600;padding:11px 20px;border:1px solid var(--ink);border-radius:3px;display:inline-flex;align-items:center;gap:8px;transition:all .25s ease;cursor:pointer;background:none}
+  .btn:hover{background:var(--ink);color:var(--white)}
+  .btn-grad{background:var(--grad-brand);border:none;color:#fff;box-shadow:0 6px 18px rgba(0,151,178,.28)}
+  .btn-grad:hover{box-shadow:0 10px 26px rgba(0,151,178,.4);transform:translateY(-1px);color:#fff}
+  @media(max-width:860px){nav ul{display:none}}
+
+  /* page hero */
+  .phead{position:relative;padding:72px 0 56px;border-bottom:1px solid var(--line);overflow:hidden}
+  .phead-glow{position:absolute;top:-200px;right:-140px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(0,151,178,.2),rgba(0,151,178,0) 62%);pointer-events:none}
+  .phead .wrap{position:relative}
+  .phead h1{font-size:clamp(44px,6.5vw,84px);margin:16px 0 0}
+  .phead .lead{margin-top:22px;max-width:56ch;font-size:18.5px;color:var(--ink-soft)}
+  .pstats{margin-top:42px;display:flex;gap:46px;flex-wrap:wrap}
+  .pstat .n{font-family:var(--disp);font-size:40px;font-weight:700;line-height:1}
+  .pstat .l{margin-top:6px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute)}
+
+  /* filter bar */
+  .filter{position:sticky;top:72px;z-index:40;background:rgba(245,248,249,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .filter .wrap{display:flex;gap:10px;padding-top:18px;padding-bottom:18px;flex-wrap:wrap}
+  .chip{font-family:var(--mono);font-size:12.5px;font-weight:500;letter-spacing:.04em;padding:9px 16px;border:1px solid var(--line);border-radius:999px;cursor:pointer;color:var(--ink-soft);background:var(--white);transition:all .2s ease;display:inline-flex;align-items:center;gap:8px}
+  .chip .c{font-size:11px;color:var(--ink-mute)}
+  .chip:hover{border-color:var(--brand-400);color:var(--ink)}
+  .chip.on{background:var(--grad-brand);border-color:transparent;color:#fff;box-shadow:0 5px 14px rgba(0,151,178,.3)}
+  .chip.on .c{color:rgba(255,255,255,.85)}
+
+  /* grid */
+  .grp{padding:56px 0 20px}
+  .grp-title{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:24px;display:flex;align-items:center;gap:14px}
+  .grp-title::after{content:"";flex:1;height:1px;background:var(--line)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+
+  .card{position:relative;background:var(--white);border:1px solid var(--line);border-radius:8px;padding:24px 22px 20px;display:flex;flex-direction:column;min-height:240px;transition:all .28s ease;overflow:hidden}
+  .card::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--grad-brand);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+  .card:hover::before{transform:scaleX(1)}
+  .card:hover{transform:translateY(-4px);border-color:var(--brand-200);box-shadow:0 16px 40px rgba(6,58,70,.1)}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+  .card .cat{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-700)}
+  .card .date{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink-mute);white-space:nowrap}
+  .card .date.live{color:var(--brand);font-weight:600}
+  .card h3{font-size:21px;margin:13px 0 6px;letter-spacing:-.015em}
+  .card .loc{font-size:13px;color:var(--ink-mute)}
+  .card .scope{margin-top:13px;font-size:13.5px;color:var(--ink-soft);line-height:1.5}
+  .card .specs{margin-top:auto;padding-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+  .spec{font-family:var(--mono);border:1px solid var(--line);border-radius:5px;padding:6px 10px;background:var(--bg)}
+  .spec .v{display:block;font-family:var(--disp);font-weight:700;font-size:16px;color:var(--ink);line-height:1.1}
+  .spec .k{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute)}
+  .spec.lone{background:var(--grad-soft);border-color:var(--brand-200)}
+  .card .client{margin-top:14px;padding-top:13px;border-top:1px dashed var(--line);font-size:12px;color:var(--ink-mute)}
+  .card .client b{color:var(--ink-soft);font-weight:600}
+
+  .note{background:var(--bg-2);border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--ink-mute);padding:18px 0;line-height:1.7;margin-top:40px}
+  .note b{color:var(--brand-700)}
+  .endcta{background:var(--grad-dark);color:#fff;padding:80px 0;text-align:center}
+  .endcta h2{font-size:clamp(30px,4.4vw,52px);max-width:18ch;margin:0 auto}
+  .endcta .btnrow{margin-top:30px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .endcta .btn{border-color:#fff;color:#fff}.endcta .btn:hover{background:#fff;color:var(--brand-900)}
+  .endcta .btn-grad{background:#fff;color:var(--brand-700)}.endcta .btn-grad:hover{color:var(--brand-900)}
+  footer{padding:36px 0;font-family:var(--mono);font-size:12px;color:var(--ink-mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="dot"></span><span class="mark">Oceanic</span><span class="sub">Healthcare&nbsp;Projects</span></div>
+    <nav><ul>
+      <li><a href="#">About</a></li><li><a href="#">Services</a></li>
+      <li><a href="#" class="active">Projects</a></li><li><a href="#">Gallery</a></li><li><a href="#">Certificates</a></li>
+    </ul></nav>
+    <a class="btn btn-grad" href="#">Get in touch →</a>
+  </div>
+</header>
+
+<section class="phead">
+  <div class="phead-glow"></div>
+  <div class="wrap">
+    <div class="eyebrow rv">Selected work · Eastern India</div>
+    <h1 class="rv" style="animation-delay:.08s">Healthcare facilities, planned,<br>built and <span class="grad-text">handed over.</span></h1>
+    <p class="lead rv" style="animation-delay:.16s">Two decades of healthcare projects, from 30-bed nursing homes to a 300-bed multi-speciality hospital, each taken from conceptual layout to a working, licensed facility.</p>
+    <div class="pstats rv" style="animation-delay:.24s">
+      <div class="pstat"><div class="n grad-text">18</div><div class="l">Projects</div></div>
+      <div class="pstat"><div class="n grad-text">725+</div><div class="l">Beds planned</div></div>
+      <div class="pstat"><div class="n grad-text">20+</div><div class="l">Years</div></div>
+      <div class="pstat"><div class="n grad-text">3</div><div class="l">States</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="filter">
+  <div class="wrap">
+    <span class="chip on" data-f="all">All <span class="c">18</span></span>
+    <span class="chip" data-f="hospital">Hospitals <span class="c">8</span></span>
+    <span class="chip" data-f="diagnostic">Diagnostic Centres <span class="c">6</span></span>
+    <span class="chip" data-f="fertility">Fertility &amp; IVF <span class="c">4</span></span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HOSPITALS -->
+  <div class="grp" data-grp="hospital">
+    <div class="grp-title">Hospitals</div>
+    <div class="grid">
+
+      <div class="card" data-cat="hospital">
+        <div class="top"><span class="cat">Multi-speciality · Salt Lake</span><span class="date">2008</span></div>
+        <h3>Columbia Asia Hospital</h3>
+        <div class="loc">Salt Lake, Kolkata · JV with Columbia Asia Hospitals</div>
+        <div class="scope">Complete project planning &amp; execution; handover before inauguration.</div>
+        <div class="specs">
+          <div class="spec"><span class="v">100</span><span class="k">Beds</span></div>
+          <div class="spec"><span class="v">67k</span><span class="k">Sq ft</span></div>
+          <div class="spec"><span class="v">B+G+9</span><span class="k">Config</span></div>
+        </div>
+        <div class="client">Client · <b>Ms. Monalisha Menani</b>, Director</div>
+      </div>
+
+      <div class="card" data-cat="hospital">
+        <div class="top"><span class="cat">Multi-speciality · Tollygunge</span><span class="date">2007</span></div>
+        <h3>RSV Hospital</h3>
+        <div class="loc">Tollygunge, Kolkata · Phase I &amp; II · NABH certified</div>
+        <div class="scope">Complete planning &amp; execution; Administrative Head (CEO) since 2007.</div>
+        <div class="specs">
+          <div class="spec"><span class="v">100</span><span class="k">Beds</span></div>
+          <div class="spec"><span class="v">40k</span><span class="k">Sq ft</span></div>
+          <div class="spec"><span class="v">B+G+6</span><span class="k">Config</span></div>
+        </div>
+        <div class="client">Client · <b>Mr. R.S. Vasisht</b>, Chairman</div>
+      </div>
+
+      <div class="card" data-cat="hospital">
+        <div class="top"><span class="cat">Multi-speciality · Silchar</span><span class="date">2018</span></div>
+        <h3>Jeevan Jyoti H&amp;RC</h3>
+        <div class="loc">Silchar, Cachar, Assam</div>
+        <div class="scope">Conceptual planning, layouts &amp; part-execution up to superstructure &amp; brickwork.</div>
+        <div class="specs">
+          <div class="spec"><span class="v">300</span><span class="k">Beds</span></div>
+          <div class="spec"><span class="v">160k</span><span class="k">Sq ft</span></div>
+          <div class="spec"><span class="v">B+G+8</span><span class="k">Config</span></div>
+        </div>
+        <div class="client">Client · <b>Mr. Prem Kiran Nath</b>, CEO</div>
+      </div>
+
+      <div class="card" data-cat="hospital">
+        <div class="top"><span class="cat">Oncology · Agarpara</span><span class="date">2019</span></div>
+        <h3>Medella Cancer Cure Centre</h3>
+        <div class="loc">Agarpara, Kolkata · Vanshil Jindal Medicure LLP</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs">
+          <div class="spec"><span class="v">45</span><span class="k">Beds</span></div>
+          <div class="spec"><span class="v">17k</span><span class="k">Sq ft</span></div>
+          <div class="spec"><span class="v">G+1</span><span class="k">Config</span></div>
+        </div>
+        <div class="client">Client · <b>Dr Rajesh Jindel</b> / Mr. Sushil Agarwal</div>
+      </div>
+
+      <div class="card" data-cat="hospital">
+        <div class="top"><span class="cat">Multi-speciality · Metiaburz</span><span class="date">2011</span></div>
+        <h3>Unipon Hospital &amp; Medical Sciences</h3>
+        <div class="loc">Metiaburz, Kolkata</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs">
+          <div class="spec"><span class="v">50</span><span class="k">Beds</span></div>
+          <div class="spec"><span class="v">16k</span><span class="k">Sq ft</span></div>
+          <div class="spec"><span class="v">G+5</span><span class="k">Config</span></div>
+        </div>
+        <div class="client">Client · <b>Mr. M.A. Laskar</b>, Chairman</div>
+      </div>
+
+      <div class="card" data-cat="hospital">
+        <div class="top"><span class="cat">Multi-speciality · Purulia</span><span class="date">2018</span></div>
+        <h3>Hospital of Rotary Club of Purulia</h3>
+        <div class="loc">Purulia, West Bengal</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs">
+          <div class="spec"><span class="v">50</span><span class="k">Beds</span></div>
+          <div class="spec"><span class="v">20k</span><span class="k">Sq ft</span></div>
+          <div class="spec"><span class="v">G+2</span><span class="k">Config</span></div>
+        </div>
+        <div class="client">Client · <b>Mr. Rajkumar Sil</b> / Mr. Jayanta Mahato</div>
+      </div>
+
+      <div class="card" data-cat="hospital">
+        <div class="top"><span class="cat">Multi-speciality · Sonarpur</span><span class="date">2019</span></div>
+        <h3>Atlas Health Point</h3>
+        <div class="loc">Rajpur Sonarpur, West Bengal</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs">
+          <div class="spec"><span class="v">30</span><span class="k">Beds</span></div>
+          <div class="spec"><span class="v">12.5k</span><span class="k">Sq ft</span></div>
+          <div class="spec"><span class="v">G+4</span><span class="k">Config</span></div>
+        </div>
+        <div class="client">Client · <b>Mr. Mukesh Khettry</b> / Mr. Rohan Khettry</div>
+      </div>
+
+      <div class="card" data-cat="hospital">
+        <div class="top"><span class="cat">Multi-speciality · Chandan Nagar</span><span class="date live">Ongoing</span></div>
+        <h3>Dr. Dutta's Clinic</h3>
+        <div class="loc">Chandan Nagar</div>
+        <div class="scope">Project planning &amp; execution, currently in progress.</div>
+        <div class="specs">
+          <div class="spec"><span class="v">50</span><span class="k">Beds</span></div>
+          <div class="spec"><span class="v">17k</span><span class="k">Sq ft</span></div>
+          <div class="spec"><span class="v">B+G+5</span><span class="k">Config</span></div>
+        </div>
+        <div class="client">Client · <b>Dr. Santanu Dutta</b>, Director</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DIAGNOSTICS -->
+  <div class="grp" data-grp="diagnostic">
+    <div class="grp-title">Diagnostic Centres</div>
+    <div class="grid">
+
+      <div class="card" data-cat="diagnostic">
+        <div class="top"><span class="cat">Diagnostic Centre</span><span class="date">2013</span></div>
+        <h3>Sparsh Diagnostica</h3>
+        <div class="loc">Bansdroni, Kolkata</div>
+        <div class="scope">Complete planning &amp; execution; Director, 2013–2019.</div>
+        <div class="specs"><div class="spec lone"><span class="v">CT</span><span class="k">Multi-slice CT scan</span></div></div>
+        <div class="client">Client · <b>Mr. Aditya Bothra</b>, Managing Director</div>
+      </div>
+
+      <div class="card" data-cat="diagnostic">
+        <div class="top"><span class="cat">Diagnostic Centre · RSV</span><span class="date">2017</span></div>
+        <h3>RSV Diagnostic, Golf Green</h3>
+        <div class="loc">Regent Park, Kolkata · unit of RSV Hospital</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs"><div class="spec lone"><span class="v">Dx</span><span class="k">Diagnostics</span></div></div>
+        <div class="client">Client · <b>Mr. R.S. Vasisht</b>, Chairman</div>
+      </div>
+
+      <div class="card" data-cat="diagnostic">
+        <div class="top"><span class="cat">Diagnostic Centre · RSV</span><span class="date">2017</span></div>
+        <h3>RSV Diagnostic, Fern Road</h3>
+        <div class="loc">Ballygunge, Kolkata · unit of RSV Hospital</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs"><div class="spec lone"><span class="v">Dx</span><span class="k">Diagnostics</span></div></div>
+        <div class="client">Client · <b>Mr. R.S. Vasisht</b>, Chairman</div>
+      </div>
+
+      <div class="card" data-cat="diagnostic">
+        <div class="top"><span class="cat">Diagnostic Centre</span><span class="date">2019</span></div>
+        <h3>Mercury Diagnostics Centre</h3>
+        <div class="loc">Behala, Kolkata</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs"><div class="spec lone"><span class="v">Dx</span><span class="k">Diagnostics</span></div></div>
+        <div class="client">Client · <b>Mr. Jaideep Khaitan</b>, Founder / Mentor</div>
+      </div>
+
+      <div class="card" data-cat="diagnostic">
+        <div class="top"><span class="cat">Diagnostic Centre · Odisha</span><span class="date">2015</span></div>
+        <h3>JMG Speciality Diagnostics</h3>
+        <div class="loc">Manglabad, Cuttack, Odisha</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs"><div class="spec lone"><span class="v">Dx</span><span class="k">Diagnostics</span></div></div>
+        <div class="client">Client · <b>Mr. Pradip Agarwal</b></div>
+      </div>
+
+      <div class="card" data-cat="diagnostic">
+        <div class="top"><span class="cat">Diagnostic Centre</span><span class="date">2005</span></div>
+        <h3>Chikitsha Medicare Centre</h3>
+        <div class="loc">Behala, Kolkata</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs"><div class="spec lone"><span class="v">Dx</span><span class="k">Diagnostics</span></div></div>
+        <div class="client">Client · <b>Mr. Jaideep Khaitan</b>, Director</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FERTILITY -->
+  <div class="grp" data-grp="fertility">
+    <div class="grp-title">Fertility &amp; IVF Clinics</div>
+    <div class="grid">
+
+      <div class="card" data-cat="fertility">
+        <div class="top"><span class="cat">Fertility &amp; IVF</span><span class="date">2016</span></div>
+        <h3>Kolkata Global IVF Clinic</h3>
+        <div class="loc">Arya Vidyalaya Road, Kolkata</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs"><div class="spec lone"><span class="v">IVF</span><span class="k">Fertility clinic</span></div></div>
+        <div class="client">Client · <b>Dr. Madhab C. Das</b>, Founder Director</div>
+      </div>
+
+      <div class="card" data-cat="fertility">
+        <div class="top"><span class="cat">Fertility &amp; IVF</span><span class="date">2018</span></div>
+        <h3>East End Fertility Clinic</h3>
+        <div class="loc">Kasba, Kolkata</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs"><div class="spec lone"><span class="v">IVF</span><span class="k">Fertility clinic</span></div></div>
+        <div class="client">Client · <b>Dr. G.B. Dutta</b>, Founder Director</div>
+      </div>
+
+      <div class="card" data-cat="fertility">
+        <div class="top"><span class="cat">Speciality Diagnostic Clinic</span><span class="date">2015</span></div>
+        <h3>Fetomat Foundation</h3>
+        <div class="loc">Kalighat, Kolkata · Pregnancy Care Centre</div>
+        <div class="scope">Complete project planning &amp; execution.</div>
+        <div class="specs"><div class="spec lone"><span class="v">Dx</span><span class="k">Speciality clinic</span></div></div>
+        <div class="client">Client · <b>Dr. Pradip Goswami</b>, Director</div>
+      </div>
+
+      <div class="card" data-cat="fertility">
+        <div class="top"><span class="cat">Gynae · Fertility &amp; IVF</span><span class="date live">Ongoing</span></div>
+        <h3>Body N Mind Clinic</h3>
+        <div class="loc">Salt Lake, Kolkata</div>
+        <div class="scope">Gynaecology / obstetric &amp; fertility clinic, currently in progress.</div>
+        <div class="specs"><div class="spec lone"><span class="v">IVF</span><span class="k">Gynae &amp; fertility</span></div></div>
+        <div class="client">Client · to be confirmed</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="note"><div class="wrap"><b>CONCEPT NOTE.</b> Illustrative design target. Cards replace the original three tables: specs adapt per category (hospitals show beds/sq ft/config; diagnostics &amp; clinics show a single type chip) so no empty cells. Client names are carried from the live site; <b>confirm with Oceanic whether to keep named clients public</b>. Stats (18 / 725+ / 20+ / 3) are derived and require verification.</div></div>
+
+<section class="endcta"><div class="wrap">
+  <h2>Planning a healthcare facility? Let's build it right.</h2>
+  <div class="btnrow"><a class="btn btn-grad" href="#">Start a conversation →</a><a class="btn" href="#">See the gallery</a></div>
+</div></section>
+
+<footer class="wrap"><span>© Oceanic Project Consultants · Kolkata</span><span>Redesign concept · not final copy</span></footer>
+
+<script>
+  const chips=[...document.querySelectorAll('.chip')];
+  const cards=[...document.querySelectorAll('.card')];
+  const groups=[...document.querySelectorAll('.grp')];
+  chips.forEach(ch=>ch.addEventListener('click',()=>{
+    chips.forEach(c=>c.classList.remove('on'));ch.classList.add('on');
+    const f=ch.dataset.f;
+    cards.forEach(c=>{c.style.display=(f==='all'||c.dataset.cat===f)?'':'none';});
+    groups.forEach(g=>{g.style.display=(f==='all'||g.dataset.grp===f)?'':'none';});
+  }));
+</script>
+</body>
+</html>
