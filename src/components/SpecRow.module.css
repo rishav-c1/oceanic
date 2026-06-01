@@ -1,0 +1,32 @@
+.specs {
+  margin-top: auto;
+  padding-top: 18px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.spec {
+  font-family: var(--mono);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 6px 10px;
+  background: var(--bg);
+}
+.v {
+  display: block;
+  font-family: var(--disp);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.k {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.lone {
+  background: var(--grad-soft);
+  border-color: var(--brand-200);
+}

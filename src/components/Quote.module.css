@@ -1,0 +1,38 @@
+.quote {
+  padding: 104px 0;
+}
+.ebWrap {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.blockquote {
+  font-family: var(--disp);
+  font-size: clamp(27px, 3.6vw, 42px);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  max-width: 24ch;
+  margin: 0 auto;
+  text-align: center;
+}
+.by {
+  margin-top: 34px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+}
+.by b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Long-form variant: readable testimonial rather than giant pull-quote. */
+.full .blockquote {
+  font-size: clamp(19px, 2.1vw, 25px);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  max-width: 56ch;
+}

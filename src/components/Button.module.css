@@ -49,3 +49,14 @@
   background: #fff;
   color: var(--brand-900);
 }
+
+/* Cyan outline for dark grounds (declared last so it wins over .onDark). */
+.accent {
+  border-color: var(--brand-200);
+  color: var(--brand-200);
+  background: none;
+}
+.accent:hover {
+  background: var(--brand-200);
+  color: var(--brand-900);
+}

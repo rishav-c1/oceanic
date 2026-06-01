@@ -1,0 +1,18 @@
+.narrative {
+  padding: 72px 0 40px;
+}
+.prose {
+  max-width: 62ch;
+}
+.prose p {
+  color: var(--ink-soft);
+  font-size: 17.5px;
+  line-height: 1.7;
+}
+.prose p:first-child {
+  color: var(--ink);
+  font-size: 19px;
+}
+.prose p + p {
+  margin-top: 22px;
+}

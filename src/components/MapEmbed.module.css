@@ -1,0 +1,49 @@
+.map {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 300px;
+  height: 100%;
+  padding: 40px;
+  text-align: center;
+  background: var(--grad-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  transition: all 0.28s ease;
+}
+.map::after {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1.5px solid var(--brand);
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+}
+.map:hover {
+  border-color: var(--brand-200);
+}
+.map:hover::after {
+  opacity: 0.5;
+}
+.pin {
+  font-size: 34px;
+  color: var(--brand);
+  line-height: 1;
+}
+.addr {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 28ch;
+  line-height: 1.6;
+}
+.cta {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-700);
+}

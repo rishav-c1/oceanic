@@ -2,20 +2,22 @@ import { Button } from "@/components/Button";
 import { CapabilityCard } from "@/components/CapabilityCard";
 import { CapabilityGrid } from "@/components/CapabilityGrid";
 import { Container } from "@/components/Container";
+import { DarkProjectCard } from "@/components/DarkProjectCard";
+import { EndCTA } from "@/components/EndCTA";
 import { Eyebrow } from "@/components/Eyebrow";
+import { FounderSplit } from "@/components/FounderSplit";
 import { GradText } from "@/components/GradText";
+import { Quote } from "@/components/Quote";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
 import { StatRow } from "@/components/StatRow";
-import { STATS } from "@/content/site";
+import { CONTACT, FOUNDER, STATS } from "@/content/site";
 import styles from "./Home.module.css";
 
-// Phase 1 deliverable: the hero + the capabilities section, built to the mockup.
-// The remaining home sections (selected-work band, testimonial, founder, end-CTA)
-// are added in Phase 2's full home build.
 export default function HomePage() {
   return (
     <>
+      {/* Hero */}
       <section className={styles.hero}>
         <div className={styles.glow} aria-hidden="true" />
         <div className={styles.blueprint} aria-hidden="true" />
@@ -45,6 +47,7 @@ export default function HomePage() {
         </Container>
       </section>
 
+      {/* Capabilities */}
       <section className={styles.section}>
         <Container>
           <SectionHead
@@ -80,6 +83,93 @@ export default function HomePage() {
           </CapabilityGrid>
         </Container>
       </section>
+
+      {/* Selected work — dark band (curated copy, mirrors the mockup) */}
+      <section className={styles.projects}>
+        <Container>
+          <SectionHead
+            onDark
+            eyebrow="Selected work"
+            title="Facilities planned, built and handed over."
+            lead="A track record across multi-speciality hospitals, oncology centres, diagnostics and IVF clinics in Eastern India."
+          />
+          <div className={styles.pgrid}>
+            <DarkProjectCard
+              tag="Multi-speciality · Salt Lake"
+              name="Columbia Asia Hospital"
+              line="Complete planning & execution · handover before inauguration"
+              specs={[
+                { v: "100", k: "Beds" },
+                { v: "67k", k: "Sq ft" },
+                { v: "B+G+9", k: "Config" },
+              ]}
+            />
+            <DarkProjectCard
+              tag="Multi-speciality · Tollygunge"
+              name="RSV Hospital"
+              line="Phase I & II · planning, execution & CEO since 2007"
+              specs={[
+                { v: "100", k: "Beds" },
+                { v: "40k", k: "Sq ft" },
+                { v: "NABH", k: "Certified" },
+              ]}
+            />
+            <DarkProjectCard
+              tag="Multi-speciality · Silchar, Assam"
+              name="Jeevan Jyoti H&RC"
+              line="Conceptual planning, layouts & part-execution to superstructure"
+              specs={[
+                { v: "300", k: "Beds" },
+                { v: "160k", k: "Sq ft" },
+                { v: "B+G+8", k: "Config" },
+              ]}
+            />
+          </div>
+          <div className={styles.viewAll}>
+            <Button href="/projects" accent>
+              View all 18 projects →
+            </Button>
+          </div>
+        </Container>
+      </section>
+
+      {/* Testimonial — verbatim excerpt of the R.S. Vasisht quote (full quote lives on /about) */}
+      <Quote author="R. S. Vasisht" role="Chairman · RSV Hospital (NABH Certified)">
+        His main strength lies in his{" "}
+        <GradText>in-depth knowledge of each aspect</GradText> associated with a
+        Healthcare project…
+      </Quote>
+
+      {/* Founder — verbatim-composed from the reference (About blurb + home teaser) */}
+      <Container>
+        <FounderSplit
+          eyebrow="The consultant"
+          name={FOUNDER.name}
+          cta={{ label: "More about Oceanic →", href: "/about" }}
+        >
+          Promoted by experienced consultant Mr. Rajesh Chatterjee, whose name is
+          well-known in the healthcare sector in Eastern India. The emphasis we lay on
+          consultant and client relationship helps both newcomers and veterans in the
+          industry place trust in us and successfully establish state-of-the-art
+          healthcare projects.
+        </FounderSplit>
+      </Container>
+
+      {/* End CTA */}
+      <EndCTA
+        align="between"
+        contacts
+        title={
+          <>
+            Planning a healthcare facility?{" "}
+            <span className={styles.ctaAccent}>Let&apos;s build it right.</span>
+          </>
+        }
+        actions={[
+          { label: "Start a conversation →", href: "/contact", variant: "grad" },
+          { label: "LinkedIn", href: CONTACT.linkedin, external: true },
+        ]}
+      />
     </>
   );
 }

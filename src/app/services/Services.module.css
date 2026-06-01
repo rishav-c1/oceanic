@@ -1,0 +1,6 @@
+.section {
+  padding: 64px 0 88px;
+}
+.groups {
+  border-top: 1px solid var(--line);
+}

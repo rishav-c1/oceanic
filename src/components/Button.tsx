@@ -7,6 +7,8 @@ type Props = {
   href?: string;
   variant?: "grad" | "outline";
   onDark?: boolean;
+  /** Cyan (brand-200) outline for dark grounds — e.g. the "View all" link on the dark band. */
+  accent?: boolean;
   className?: string;
   /** Force a plain external anchor (new tab). */
   external?: boolean;
@@ -22,6 +24,7 @@ export function Button({
   href,
   variant = "outline",
   onDark,
+  accent,
   className,
   external,
   download,
@@ -30,6 +33,7 @@ export function Button({
     styles.btn,
     variant === "grad" && styles.grad,
     onDark && styles.onDark,
+    accent && styles.accent,
     className,
   ]
     .filter(Boolean)
