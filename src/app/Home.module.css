@@ -70,6 +70,10 @@
 .ctaAccent {
   color: var(--brand-200);
 }
+/* breathing room below the founder band so it isn't flush against the dark CTA */
+.founderWrap {
+  margin-bottom: 64px;
+}
 @media (max-width: 820px) {
   .pgrid {
     grid-template-columns: 1fr;

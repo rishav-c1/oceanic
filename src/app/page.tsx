@@ -141,7 +141,7 @@ export default function HomePage() {
       </Quote>
 
       {/* Founder — verbatim-composed from the reference (About blurb + home teaser) */}
-      <Container>
+      <Container className={styles.founderWrap}>
         <FounderSplit
           eyebrow="The consultant"
           name={FOUNDER.name}
