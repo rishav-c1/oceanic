@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./Brand.module.css";
 
-/** Wordmark lockup: gradient dot + "Oceanic" + mono "Healthcare Projects" sub. */
+/** Wordmark lockup: "Oceanic" with a baseline-aligned mono "Healthcare Projects" descriptor. */
 export function Brand() {
   return (
     <Link
@@ -9,7 +9,6 @@ export function Brand() {
       className={styles.brand}
       aria-label="Oceanic Project Consultants — home"
     >
-      <span className={styles.dot} aria-hidden="true" />
       <span className={styles.mark}>Oceanic</span>
       <span className={styles.sub}>Healthcare&nbsp;Projects</span>
     </Link>

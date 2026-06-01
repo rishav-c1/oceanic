@@ -1,13 +1,11 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
+import { withBase } from "@/lib/paths";
 import { Button } from "./Button";
 import { Eyebrow } from "./Eyebrow";
 import styles from "./FounderSplit.module.css";
 
-/**
- * Bordered founder split with a cyan inset frame on the portrait panel.
- * Portrait is a placeholder until the Rajesh Chatterjee photo is supplied
- * (TODO(asset)); swap the panel for next/image then.
- */
+/** Bordered founder split: the Rajesh Chatterjee portrait in a cyan inset frame, beside the bio. */
 export function FounderSplit({
   eyebrow,
   name,
@@ -22,7 +20,13 @@ export function FounderSplit({
   return (
     <div className={styles.founder}>
       <div className={styles.photo}>
-        <span>[ Founder portrait ]</span>
+        <Image
+          src={withBase("/founder/rajesh-chatterjee.jpg")}
+          alt="Rajesh Chatterjee, Chief Consultant & Founder of Oceanic Project Consultants"
+          fill
+          sizes="(max-width: 760px) 100vw, 40vw"
+          className={styles.img}
+        />
       </div>
       <div className={styles.body}>
         <Eyebrow>{eyebrow}</Eyebrow>
