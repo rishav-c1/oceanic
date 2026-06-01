@@ -20,7 +20,7 @@ function GalleryItem({
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
           className={styles.img}
           priority={priority}
-          quality={50}
+          quality={45}
         />
       </div>
       <figcaption className={styles.cap}>

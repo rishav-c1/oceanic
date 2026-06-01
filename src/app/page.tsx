@@ -134,7 +134,7 @@ export default function HomePage() {
       </section>
 
       {/* Testimonial — verbatim excerpt of the R.S. Vasisht quote (full quote lives on /about) */}
-      <Quote author="R. S. Vasisht" role="Chairman · RSV Hospital (NABH Certified)">
+      <Quote author="R.S. Vasisht" role="Chairman · RSV Hospital (NABH Certified)">
         His main strength lies in his{" "}
         <GradText>in-depth knowledge of each aspect</GradText> associated with a
         Healthcare project…

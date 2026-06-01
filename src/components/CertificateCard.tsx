@@ -24,7 +24,7 @@ export function CertificateCard({
           sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
           className={styles.img}
           priority={priority}
-          quality={50}
+          quality={44}
         />
       </div>
       <h3 className={styles.name}>{project.name}</h3>

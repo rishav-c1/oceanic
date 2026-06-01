@@ -65,6 +65,6 @@ export interface Stat {
 export const STATS: Stat[] = [
   { value: "20+", label: "Years of practice" },
   { value: "18", label: "Projects" },
-  { value: "725+", label: "Beds planned" },
+  { value: "725", label: "Beds planned" },
   { value: "3", label: "States · WB · Assam · Odisha" },
 ];

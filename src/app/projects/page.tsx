@@ -28,7 +28,7 @@ export const metadata: Metadata = pageMeta({
 
 const PROJECT_STATS: Stat[] = [
   { value: "18", label: "Projects" },
-  { value: "725+", label: "Beds planned" },
+  { value: "725", label: "Beds planned" },
   { value: "20+", label: "Years" },
   { value: "3", label: "States" },
 ];

@@ -77,7 +77,7 @@ export default function AboutPage() {
 
       <Quote
         full
-        author="R. S. Vasisht"
+        author="R.S. Vasisht"
         role="Chairman · RSV Hospital (An NABH Certified Hospital)"
         schemaBody={TESTIMONIAL}
       >
