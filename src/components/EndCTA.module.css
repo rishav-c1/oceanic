@@ -26,8 +26,9 @@
   max-width: 18ch;
 }
 .center .title {
-  font-size: clamp(25px, 3vw, 38px);
-  max-width: 22ch;
+  font-size: clamp(30px, 5vw, 56px);
+  line-height: 1.08;
+  max-width: 24ch;
 }
 .center .side {
   margin-top: 30px;

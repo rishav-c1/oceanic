@@ -72,6 +72,17 @@
 }
 .img {
   object-fit: cover;
+  filter: grayscale(1);
+  transition: filter 0.45s ease;
+}
+.item:hover .img {
+  filter: grayscale(0);
+}
+/* touch devices can't hover — show full colour rather than stuck-grey */
+@media (hover: none) {
+  .img {
+    filter: none;
+  }
 }
 .cap {
   display: flex;

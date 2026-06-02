@@ -11,7 +11,7 @@ import { Quote } from "@/components/Quote";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
 import { StatRow } from "@/components/StatRow";
-import { CONTACT, FOUNDER, STATS } from "@/content/site";
+import { FOUNDER, STATS } from "@/content/site";
 import styles from "./Home.module.css";
 
 export default function HomePage() {
@@ -155,10 +155,9 @@ export default function HomePage() {
         </FounderSplit>
       </Container>
 
-      {/* End CTA */}
+      {/* End CTA — centered (contacts live in the footer) */}
       <EndCTA
-        align="between"
-        contacts
+        align="center"
         title={
           <>
             Planning a healthcare facility?{" "}
@@ -167,7 +166,7 @@ export default function HomePage() {
         }
         actions={[
           { label: "Start a conversation →", href: "/contact", variant: "grad" },
-          { label: "LinkedIn", href: CONTACT.linkedin, external: true },
+          { label: "Explore our projects", href: "/projects" },
         ]}
       />
     </>
