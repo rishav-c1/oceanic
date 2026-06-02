@@ -1,11 +1,13 @@
 .wrap {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 32px;
+  /* horizontal only — a `padding` shorthand here would zero out (and override)
+     the vertical padding that section classes like EndCTA set on the same element */
+  padding-inline: 32px;
 }
 
 @media (max-width: 520px) {
   .wrap {
-    padding: 0 20px;
+    padding-inline: 20px;
   }
 }
